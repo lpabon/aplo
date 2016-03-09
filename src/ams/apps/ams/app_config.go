@@ -22,9 +22,10 @@ import (
 )
 
 type AmsConfig struct {
-	GlusterPodName string `json:"gluster_pod_name"`
-	GlusterHost    string `json:"gluster_hostname"`
-	GlusterVolume  string `json:"gluster_volume"`
+	GlusterPodName  string `json:"gluster_pod_name"`
+	GlusterHost     string `json:"gluster_hostname"`
+	GlusterVolume   string `json:"gluster_volume"`
+	GlusterMountDir string `json:"gluster_mountdir"`
 }
 
 type ConfigFile struct {
@@ -52,6 +53,10 @@ func loadConfiguration(configIo io.Reader) *AmsConfig {
 	if config.Ams.GlusterVolume == "" {
 		logger.LogError("Configuration file is missing gluster volume name")
 		return nil
+	}
+
+	if config.Ams.GlusterMountDir == "" {
+		config.Ams.GlusterMountDir = "/mnt/gluster"
 	}
 
 	return &config.Ams

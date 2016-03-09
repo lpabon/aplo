@@ -1,0 +1,9 @@
+{
+    "port": "8080",
+    "ams" : {
+        "gluster_pod_name" : "fake-pod",
+        "gluster_hostname" : "fake-host",
+        "gluster_volume" : "fakevol",
+        "gluster_mountdir" : "/tmp"
+    }
+}

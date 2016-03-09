@@ -20,6 +20,7 @@ import (
 	"encoding/json"
 	"github.com/heketi/utils"
 	"net/http"
+	"os"
 )
 
 func (a *App) VolumeCreate(w http.ResponseWriter, r *http.Request) {
@@ -37,6 +38,7 @@ func (a *App) VolumeCreate(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Create directory on GlusterFS volume
+	os.Mkdir(a.conf.GlusterMountDir+"/"+msg.Name, 0755)
 
 	// Setup quota
 
