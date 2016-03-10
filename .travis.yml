@@ -1,6 +1,9 @@
 language: go
 install:
 - bash .travis-fork-fix
+- go get github.com/robfig/glock
+- glock sync github.com/gluster/aplo/src/ams
+- bash .travis-fork-fix
 matrix:
   include:
   - go: 1.5.3
