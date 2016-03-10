@@ -24,7 +24,8 @@ RUN mkdir $BUILD_HOME $GOPATH $APLO_CONF_DIR && \
 RUN go get github.com/robfig/glock && \
     glock sync github.com/gluster/aplo/src/ams
 
-RUN cd $GOPATH/src/github.com/aplo/src/ams && go build && \
+RUN cd $GOPATH/src/github.com/gluster/aplo/src/ams && \
+    go build && \
     cp ams /usr/bin/ams && \
     cd && rm -rf $BUILD_HOME && \
     yum -q -y remove git golang make && \
