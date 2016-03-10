@@ -1,0 +1,9 @@
+{
+    "port": "8080",
+    "ams" : {
+        "gluster_pod_name" : "gluster-1",
+        "gluster_hostname" : "192.168.10.100",
+        "gluster_volume" : "glustervol",
+        "gluster_mountdir" : "/mnt/gluster"
+    }
+}
