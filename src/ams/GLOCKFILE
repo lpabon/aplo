@@ -8,7 +8,6 @@ github.com/docker/go-units 0bbddae09c5a5419a8c6dcdd7ff90da3d450393b
 github.com/docker/spdystream 106e140db2cb50923efe088bf2906b2ee5a45fec
 github.com/emicklei/go-restful 777bb3f19bcafe2575ffb2a3e46af92509ae9594
 github.com/ghodss/yaml 73d445a93680fa1a78ae23a5839bad48f32ba1ee
-github.com/gluster/aplo 99a42f7f40d26c0eb6b11312b96e61d9b6230262
 github.com/golang/glog 44145f04b68cf362d9c4df2182967c2275eaefed
 github.com/golang/protobuf b982704f8bb716bb608144408cff30e15fbde841
 github.com/google/cadvisor e39fb02c89f2b39808bc1723108cde5bb510e102
