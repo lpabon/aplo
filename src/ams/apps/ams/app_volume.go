@@ -31,6 +31,12 @@ func (a *App) VolumeCreate(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Check name
+	if msg.Name == "" {
+		http.Error(w, "Name is missing", http.StatusBadRequest)
+		return
+	}
+
 	// Check the message has devices
 	if msg.Size < 1 {
 		http.Error(w, "Invalid volume size", http.StatusBadRequest)
@@ -57,8 +63,49 @@ func (a *App) VolumeCreate(w http.ResponseWriter, r *http.Request) {
 }
 
 func (a *App) VolumeExpand(w http.ResponseWriter, r *http.Request) {
+	var msg VolumeCreateRequest
+	err := utils.GetJsonFromRequest(r, &msg)
+	if err != nil {
+		http.Error(w, "request unable to be parsed", 422)
+		return
+	}
+
+	// Check name
+	if msg.Name == "" {
+		http.Error(w, "Name is missing", http.StatusBadRequest)
+		return
+	}
+
+	// Check the message has devices
+	if msg.Size < 1 {
+		http.Error(w, "Invalid volume size", http.StatusBadRequest)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+	w.WriteHeader(http.StatusCreated)
+	if err := json.NewEncoder(w).Encode(msg); err != nil {
+		panic(err)
+	}
 }
 func (a *App) VolumeDelete(w http.ResponseWriter, r *http.Request) {
+	var msg VolumeCreateRequest
+	err := utils.GetJsonFromRequest(r, &msg)
+	if err != nil {
+		http.Error(w, "request unable to be parsed", 422)
+		return
+	}
+
+	// Check name
+	if msg.Name == "" {
+		http.Error(w, "Name is missing", http.StatusBadRequest)
+		return
+	}
+
+	a.asyncManager.AsyncHttpRedirectFunc(w, r, func() (seeother string, e error) {
+		return "", nil
+	})
 }
+
 func (a *App) VolumeList(w http.ResponseWriter, r *http.Request) {
 }
