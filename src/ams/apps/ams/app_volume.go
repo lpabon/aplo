@@ -46,7 +46,7 @@ func (a *App) VolumeCreate(w http.ResponseWriter, r *http.Request) {
 	var resp VolumeCreateResponse
 	resp.Size = msg.Size
 	resp.Name = msg.Name
-	resp.Gid = resp.Gid
+	resp.Gid = msg.Gid
 	resp.Mount.GlusterFS.MountPoint = a.conf.GlusterHost + ":" +
 		a.conf.GlusterVolume + "/" + resp.Name
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
